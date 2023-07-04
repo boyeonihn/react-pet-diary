@@ -1,23 +1,32 @@
 import { useState } from 'react';
 
 export const DiaryEditor = () => {
-  const [author, setAuthor] = useState('');
-  const [rating, setRating] = useState();
-  const [content, setContent] = useState('');
+  const [entry, setEntry] = useState({
+    author: '',
+    content: '',
+    rating: '',
+  });
 
   const handleAuthorChange = (e) => {
-    const authorInput = e.target.value;
-    setAuthor(authorInput);
+    const author = e.target.value;
+    setEntry({ ...entry, author });
+  };
+
+  const handleContentChange = (e) => {
+    const content = e.target.value;
+    setEntry({ ...entry, content });
   };
 
   const handleRating = (e) => {
-    const ratingInput = e.target.value;
-    console.log(ratingInput);
+    const rating = e.target.value;
+    setEntry({ ...entry, rating });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  console.log(entry);
   return (
     <section className="DiaryEditor">
       <h1>펫 일기장</h1>
@@ -27,9 +36,13 @@ export const DiaryEditor = () => {
           type="text"
           placeholder="Author"
           name="author"
-          value={author}
+          value={entry.author}
         />
-        <textarea placeholder="Write your diary!"></textarea>
+        <textarea
+          placeholder="Write your diary!"
+          value={entry.content}
+          onChange={handleContentChange}
+        />
         <label htmlFor="rating">Today's Rating</label>
         <select onChange={handleRating} id="rating" value={entry.rating}>
           <option value=""></option>
