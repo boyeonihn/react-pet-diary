@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './DiaryEditor.module.css';
 
 export const DiaryEditor = () => {
   const [entry, setEntry] = useState({
@@ -22,13 +23,13 @@ export const DiaryEditor = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('saved!', entry);
   };
 
-  console.log(entry);
   return (
-    <section className="DiaryEditor">
+    <section className={styles.DiaryEditor}>
       <h1>펫 일기장</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           onChange={handleChangeState}
           type="text"
