@@ -4,22 +4,20 @@ export const DiaryEditor = () => {
   const [entry, setEntry] = useState({
     author: '',
     content: '',
-    rating: '',
+    rating: 1,
   });
 
-  const handleAuthorChange = (e) => {
-    const author = e.target.value;
-    setEntry({ ...entry, author });
-  };
-
-  const handleContentChange = (e) => {
-    const content = e.target.value;
-    setEntry({ ...entry, content });
-  };
-
-  const handleRating = (e) => {
-    const rating = e.target.value;
-    setEntry({ ...entry, rating });
+  const handleChangeState = (e) => {
+    if (e.target.name === 'author') {
+      const author = e.target.value;
+      setEntry({ ...entry, author });
+    } else if (e.target.name === 'content') {
+      const content = e.target.value;
+      setEntry({ ...entry, content });
+    } else if (e.target.name === 'rating') {
+      const rating = e.target.value;
+      setEntry({ ...entry, rating });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -32,19 +30,27 @@ export const DiaryEditor = () => {
       <h1>펫 일기장</h1>
       <form onSubmit={handleSubmit}>
         <input
-          onChange={handleAuthorChange}
+          onChange={handleChangeState}
           type="text"
           placeholder="Author"
           name="author"
           value={entry.author}
+          required
         />
         <textarea
           placeholder="Write your diary!"
           value={entry.content}
-          onChange={handleContentChange}
+          name="content"
+          onChange={handleChangeState}
+          required
         />
         <label htmlFor="rating">Today's Rating</label>
-        <select onChange={handleRating} id="rating" value={entry.rating}>
+        <select
+          onChange={handleChangeState}
+          id="rating"
+          name="rating"
+          value={entry.rating}
+        >
           <option value=""></option>
           <option value={1}>1</option>
           <option value={2}>2</option>
