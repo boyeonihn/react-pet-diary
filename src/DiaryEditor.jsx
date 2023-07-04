@@ -46,11 +46,11 @@ export const DiaryEditor = () => {
         <label htmlFor="rating">Today's Rating</label>
         <select onChange={handleRating} id="rating" value={entry.rating}>
           <option value=""></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
+          <option value={3}>3</option>
+          <option value={4}>4</option>
+          <option value={5}>5</option>
         </select>
         <button>일기 저장하기</button>
       </form>
