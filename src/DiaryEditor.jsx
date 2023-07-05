@@ -7,6 +7,7 @@ import styles from './DiaryEditor.module.css';
     author: '',
     content: '',
     rating: 1,
+    id: crypto.randomUUID(),
   });
 
   const handleChangeState = (e) => {
