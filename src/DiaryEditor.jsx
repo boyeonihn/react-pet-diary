@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import styles from './DiaryEditor.module.css';
 
+export const DiaryEditor = ({ addEntryToList }) => {
   const authorInput = useRef();
   const contentInput = useRef();
   const [entry, setEntry] = useState({
