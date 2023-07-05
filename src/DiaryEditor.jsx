@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styles from './DiaryEditor.module.css';
 
-export const DiaryEditor = () => {
+  const authorInput = useRef();
+  const contentInput = useRef();
   const [entry, setEntry] = useState({
     author: '',
     content: '',
@@ -23,7 +24,16 @@ export const DiaryEditor = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('saved!', entry);
+    if (entry.author.length < 1) {
+      authorInput.current.focus();
+      return;
+    }
+
+    if (entry.content.length < 5) {
+      contentInput.current.focus();
+      return;
+    }
+    addEntryToList(entry);
   };
 
   return (
@@ -36,14 +46,14 @@ export const DiaryEditor = () => {
           placeholder="Author"
           name="author"
           value={entry.author}
-          required
+          ref={authorInput}
         />
         <textarea
           placeholder="Write your diary!"
           value={entry.content}
           name="content"
           onChange={handleChangeState}
-          required
+          ref={contentInput}
         />
         <label htmlFor="rating">Today's Rating</label>
         <select
