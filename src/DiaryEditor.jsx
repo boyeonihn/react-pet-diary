@@ -14,7 +14,7 @@ export const DiaryEditor = ({ addEntryToList }) => {
   const handleChangeState = (e) => {
     if (e.target.name === 'author') {
       const author = e.target.value;
-      setEntry({ ...entry, author });
+      setEntry({ ...entry, author, createdAt: new Date().getTime() });
     } else if (e.target.name === 'content') {
       const content = e.target.value;
       setEntry({ ...entry, content });
