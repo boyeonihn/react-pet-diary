@@ -1,5 +1,4 @@
-export const DiaryList = ({ entries }) => {
-  console.log(entries);
+import { DiaryItem } from './DiaryItem';
   return (
     <section className="DiaryList">
       <h1>일기장 리스트</h1>
