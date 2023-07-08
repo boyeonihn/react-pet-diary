@@ -6,7 +6,8 @@ function App() {
   const [diaryList, setDiaryList] = useState([]);
 
   const addEntryToList = (entry) => {
-    setDiaryList((currentList) => [...currentList, entry]);
+    setDiaryList([...diaryList, entry]);
+  };
   };
 
   return (
