@@ -36,6 +36,12 @@ export const DiaryEditor = ({ addEntryToList }) => {
       return;
     }
     addEntryToList(entry);
+    setEntry({
+      author: '',
+      content: '',
+      rating: 1,
+      id: crypto.randomUUID(),
+    });
   };
 
   return (
