@@ -8,12 +8,15 @@ function App() {
   const addEntryToList = (entry) => {
     setDiaryList([...diaryList, entry]);
   };
+
+  const deleteEntry = (entryId) => {
+    setDiaryList(diaryList.filter((entry) => entry.id !== entryId));
   };
 
   return (
     <div>
       <DiaryEditor addEntryToList={addEntryToList} />
-      <DiaryList entries={diaryList} />
+      <DiaryList entries={diaryList} deleteEntry={deleteEntry} />
     </div>
   );
 }
