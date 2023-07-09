@@ -63,7 +63,7 @@ export const DiaryEditor = ({ addEntryToList }) => {
           onChange={handleChangeState}
           ref={contentInput}
         />
-        <label htmlFor="rating">Today's Rating</label>
+        <label htmlFor="rating">감정 점수</label>
         <select
           onChange={handleChangeState}
           id="rating"
