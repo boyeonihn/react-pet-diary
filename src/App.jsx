@@ -15,16 +15,14 @@ function App() {
 
   const editEntry = (targetEntry, entryId) => {
     setDiaryList(
-      diaryList.map((entry) => {
-        if (entry.id === entryId) {
-          return {
-            ...entry,
-            ...targetEntry,
-          };
-        } else {
-          return entry;
-        }
-      })
+      diaryList.map((entry) =>
+        entry.id === entryId
+          ? {
+              ...entry,
+              ...targetEntry,
+            }
+          : entry
+      )
     );
   };
 
