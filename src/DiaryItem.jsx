@@ -48,9 +48,13 @@ export const DiaryItem = ({
 
   return (
     <div className={styles.DiaryItem}>
-      <button className={id} onClick={onRemove}>
-        삭제하기
-      </button>
+      {isEdit ? (
+        <button onClick={quitEditMode}>수정 취소</button>
+      ) : (
+        <button className={id} onClick={onRemove}>
+          삭제하기
+        </button>
+      )}
       <button className={id} onClick={onEdit}>
         {isEdit ? '저장하기' : '수정하기'}
       </button>
