@@ -23,6 +23,11 @@ export const DiaryItem = ({
     const rating = event.target.value;
     setLocalRating(rating);
   };
+  const onRemove = (event) => {
+    const id = event.target.className;
+    deleteEntry(id);
+  };
+
   const onEdit = (event) => {
     const id = event.target.className;
     const entry = {
@@ -35,6 +40,9 @@ export const DiaryItem = ({
 
   return (
     <div className={styles.DiaryItem}>
+      <button className={id} onClick={onRemove}>
+        삭제하기
+      </button>
       <button className={id} onClick={onEdit}>
         {isEdit ? '저장하기' : '수정하기'}
       </button>
