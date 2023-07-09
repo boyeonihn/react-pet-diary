@@ -29,12 +29,20 @@ export const DiaryItem = ({
   };
 
   const onEdit = (event) => {
-    const id = event.target.className;
-    const entry = {
-      content: localContent,
-      rating: localRating,
-    };
-    editEntry(entry, id);
+    if (isEdit) {
+      if (localContent.length < 5) {
+        alert('일기장에 좀 더 써주세요!');
+        return;
+      }
+      const id = event.target.className;
+      const entry = {
+        content: localContent,
+        rating: localRating,
+      };
+      editEntry(entry, id);
+      setPrevContent(localContent);
+    }
+
     toggleIsEdit();
   };
 
