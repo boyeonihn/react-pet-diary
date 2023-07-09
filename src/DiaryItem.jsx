@@ -6,9 +6,22 @@ export const DiaryItem = ({
   id,
   createdAt,
   deleteEntry,
+  editEntry,
 }) => {
+  const onEdit = (event) => {
+    const id = event.target.className;
+    const entry = {
+      content: localContent,
+      rating: localRating,
+    };
+    editEntry(entry, id);
+  };
+
   return (
     <div className={styles.DiaryItem}>
+      <button className={id} onClick={onEdit}>
+        {isEdit ? '저장하기' : '수정하기'}
+      </button>
       <div className={styles.info}>
         <button
           className={id}

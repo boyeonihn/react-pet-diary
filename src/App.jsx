@@ -13,10 +13,29 @@ function App() {
     setDiaryList(diaryList.filter((entry) => entry.id !== entryId));
   };
 
+  const editEntry = (targetEntry, entryId) => {
+    setDiaryList(
+      diaryList.map((entry) => {
+        if (entry.id === entryId) {
+          return {
+            ...entry,
+            ...targetEntry,
+          };
+        } else {
+          return entry;
+        }
+      })
+    );
+  };
+
   return (
     <div>
       <DiaryEditor addEntryToList={addEntryToList} />
-      <DiaryList entries={diaryList} deleteEntry={deleteEntry} />
+      <DiaryList
+        entries={diaryList}
+        deleteEntry={deleteEntry}
+        editEntry={editEntry}
+      />
     </div>
   );
 }
