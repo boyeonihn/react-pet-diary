@@ -13,6 +13,7 @@ export const DiaryItem = ({
   const toggleIsEdit = () => setIsEdit(!isEdit);
 
   const [localContent, setLocalContent] = useState(content);
+  const [prevContent, setPrevContent] = useState(content);
   const [localRating, setLocalRating] = useState(rating);
   const handleContentChange = (event) => {
     const content = event.target.value;
@@ -46,6 +47,10 @@ export const DiaryItem = ({
     toggleIsEdit();
   };
 
+  const quitEditMode = () => {
+    toggleIsEdit();
+    setLocalContent(prevContent);
+  };
   return (
     <div className={styles.DiaryItem}>
       {isEdit ? (
